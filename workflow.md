@@ -1,9 +1,10 @@
 i want to build a resturant online ordering system
-consist of 2 pages:
+consist of 3 pages:
 1. home page(landing page)
 2. menu page
+3. product details page
 
-home page will have:
+***home page will have:
 1-header :
 a-logo (when clicked it takes to home page)
 b-"order now" CTA when click it takes to menu page
@@ -77,7 +78,7 @@ a-hero section:
 -subtitle"Experience the finest flavors in town"
 -CTA"Order Now" when click it takes to menu page
 
-b-navigation:
+b-navigation (it will be under the hero not in the header):
 -home
 -menu
 -about
@@ -104,12 +105,12 @@ e-ready to order section:
 -subtitle"Check out our full menu and place your order now"
 -CTA"view menu" when click it takes to menu page
 
-menu page will have:
+***menu page will have:
 -buttons for category sorting
 -sorting by price 
 -cards containing products details (image, name, price, description(50 characters max,three dots if more than 50 characters),add to cart button)
 *when open menu page and during loading the data from the api show a loading spinner
-*when clicking add to cart button it will add the product to the cart and turn the button to update the quantity ,if the customer want to reduce the quantity less than 1 after confirmation it will remove the item from the cart and turn the button to add to cart
+*when clicking add to cart button it will add the product to the cart and turn the "add to cart" button to update the quantity ,if the customer want to reduce the quantity less than 1 after confirmation it will remove the item from the cart and turn the button to "add to cart"
 *cards size should be equal and constant for all cards, and the distances between the card components should also be constant.
 
 -pagination:
@@ -117,7 +118,9 @@ menu page will have:
 -page numbers buttons with current page highlighted
 -previous and next buttons when clicked it will go to the top of previous or the top of next page
 
-*when clicking on the product it will open a product details page:
+*when clicking on the product it will open a product details page
+
+***product details page has:
 -product image
 -product name
 -product price
@@ -134,15 +137,3 @@ menu page will have:
 *we will use api to get the menu items and categories
 *we will use stripe to handle the payment(optionally)
 *we will use google sheets to save the data of the order
-
-
-read the @workflow.md 
-and give me the correct prompt for making this website step by step, before taking any action show me the prompt
-ask me clarifying questions to make the best prompt
-constraints: the website has to be only HTML, CSS, JS
-the static content has to be in a seprate file content.js
-html has to be inside index.html file, make separate html page for each page in the website
-only one logic.jd file for the whole website
-only one style.css file for the whole website
-i dont know how to make the integrations so I need a setup file for the guidance instructions for each integration
-

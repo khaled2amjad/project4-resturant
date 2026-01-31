@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assests/logo.png" alt="THE GRILLHOUSE" class="logo-image">
+                <span class="logo-text">THE GRILLHOUSE</span>
+            </a>
+            <nav class="header-nav">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="cart-icon-btn" id="cartIconBtn" aria-label="Open cart">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                <button class="btn-order-now">Order Now</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="product-details-page">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="menu.html" class="breadcrumb-link">Menu</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current" id="productName">Product Details</span>
+            </nav>
+
+            <!-- Loading State -->
+            <div class="product-loading" id="productLoading">
+                <div class="loading-spinner"></div>
+                <p>Loading product details...</p>
+            </div>
+
+            <!-- Product Details Container -->
+            <div class="product-details-container" id="productDetailsContainer" style="display: none;">
+                <div class="product-left-section">
+                    <div class="product-image-section">
+                        <img id="productImage" src="" alt="" class="product-main-image">
+                    </div>
+                    
+                    <div class="product-basic-info">
+                        <h1 class="product-title" id="productTitle"></h1>
+                        <p class="product-brand" id="productBrand"></p>
+                        <div class="product-price-section">
+                            <span class="product-price" id="productPrice"></span>
+                        </div>
+                        
+                        <div class="product-meta">
+                            <div class="product-rating" id="productRating">
+                                <span class="rating-stars" id="ratingStars"></span>
+                                <span class="rating-value" id="ratingValue"></span>
+                            </div>
+                            <div class="product-origin" id="productOrigin"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-right-section">
+                    <div class="product-description">
+                        <h3>Description</h3>
+                        <p id="productDescription"></p>
+                    </div>
+
+                    <div class="product-ingredients">
+                        <h3>Ingredients</h3>
+                        <p id="productIngredients">Fresh ingredients, premium quality meat, special sauce, lettuce, tomato, cheese, pickles, onions</p>
+                    </div>
+
+                    <div class="product-nutrition">
+                        <h3>Nutritional Information</h3>
+                        <div class="nutrition-grid">
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Calories</span>
+                                <span class="nutrition-value" id="productCalories">450-550</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Protein</span>
+                                <span class="nutrition-value">25g</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Carbs</span>
+                                <span class="nutrition-value">35g</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="nutrition-label">Fat</span>
+                                <span class="nutrition-value">20g</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-order-section">
+                        <div class="quantity-selector">
+                            <label for="quantitySelect">Quantity:</label>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" id="decreaseQty" disabled>-</button>
+                                <input type="number" id="quantitySelect" value="1" min="1" max="99" readonly>
+                                <button class="quantity-btn" id="increaseQty">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="add-to-cart-section">
+                            <button class="btn btn-primary btn-add-to-cart" id="addToCartBtn">
+                                <span class="btn-text" data-content="addToCartBtn">Add to Cart</span>
+                                <span class="btn-price" id="btnPrice"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn btn-secondary" onclick="history.back()">
+                            ← Back to Menu
+                        </button>
+                        <a href="menu.html" class="btn btn-secondary">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div class="product-error" id="productError" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <h2>Product Not Found</h2>
+                <p>Sorry, we couldn't find the product you're looking for.</p>
+                <a href="menu.html" class="btn btn-primary">Back to Menu</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="about">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-title" data-content="policiesTitle"></h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link" data-content="privacyPolicy"></a></li>
+                    <li><a href="#" class="footer-link" data-content="termsOfService"></a></li>
+                    <li><a href="#" class="footer-link" data-content="refundPolicy"></a></li>
+                </ul>
+            </div>
+            <div class="footer-section" id="contact">
+                <h3 class="footer-title" data-content="contactTitle"></h3>
+                <p class="footer-text" data-content="phone"></p>
+                <p class="footer-text" data-content="email"></p>
+                <p class="footer-text" data-content="location"></p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title" data-content="followUsTitle"></h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+                    <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-icon" aria-label="Twitter">🐦</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title" data-content="hoursTitle"></h3>
+                <p class="footer-text" data-content="hoursWeekday"></p>
+                <p class="footer-text" data-content="hoursWeekend"></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright" data-content="copyright"></p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal cart-modal">
+            <div class="modal-header">
+                <h2 class="modal-title" data-content="cartTitle"></h2>
+                <button class="modal-close" id="closeCartModal" aria-label="Close cart">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be generated by JavaScript -->
+                </div>
+                <div class="cart-empty" id="cartEmpty">
+                    <p data-content="cartEmptyMessage"></p>
+                </div>
+                <div class="cart-summary" id="cartSummary">
+                    <div class="summary-row">
+                        <span data-content="subtotalLabel"></span>
+                        <span class="summary-value" id="cartSubtotal">0.00 JOD</span>
+                    </div>
+                    <div class="summary-row">
+                        <span data-content="deliveryFeeLabel"></span>
+                        <span class="summary-value" id="cartDeliveryFee">2.50 JOD</span>
+                    </div>
+                    <div class="summary-row">
+                        <span data-content="taxLabel"></span>
+                        <span class="summary-value" id="cartTax">0.00 JOD</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span data-content="totalLabel"></span>
+                        <span class="summary-value" id="cartTotal">2.50 JOD</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closeCartModalBtn" data-content="continueShopping"></button>
+                <button class="btn btn-primary" id="checkoutBtn" data-content="checkoutBtn" disabled></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal checkout-modal">
+            <div class="modal-header">
+                <h2 class="modal-title" data-content="checkoutTitle"></h2>
+                <button class="modal-close" id="closeCheckoutModal" aria-label="Close checkout">×</button>
+            </div>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="form-group">
+                    <label for="customerName" data-content="nameLabel"></label>
+                    <input type="text" id="customerName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone" data-content="phoneLabel"></label>
+                    <input type="tel" id="customerPhone" name="phone" pattern="^7\d{8}$" required>
+                    <small class="form-hint" data-content="phoneHint"></small>
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress" data-content="addressLabel"></label>
+                    <input type="text" id="customerAddress" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerCity" data-content="cityLabel"></label>
+                    <input type="text" id="customerCity" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerStreet" data-content="streetLabel"></label>
+                    <input type="text" id="customerStreet" name="street" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerBuilding" data-content="buildingLabel"></label>
+                    <input type="text" id="customerBuilding" name="building" pattern="\d+" required>
+                    <small class="form-hint" data-content="buildingHint"></small>
+                </div>
+                <div class="form-group">
+                    <label for="customerNotes" data-content="notesLabel"></label>
+                    <textarea id="customerNotes" name="notes" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label data-content="paymentMethodLabel"></label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="paymentMethod" value="cash" checked>
+                            <span data-content="cashOnDelivery"></span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="paymentMethod" value="online">
+                            <span data-content="onlinePayment"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelCheckoutBtn" data-content="cancelBtn"></button>
+                    <button type="submit" class="btn btn-primary" id="completeOrderBtn" data-content="completeOrderBtn"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div class="modal-overlay" id="thankYouModal">
+        <div class="modal thank-you-modal">
+            <div class="modal-body">
+                <div class="thank-you-icon">✓</div>
+                <h2 class="thank-you-title" data-content="thankYouTitle"></h2>
+                <p class="thank-you-message" data-content="thankYouMessage"></p>
+                <div class="track-order" id="trackOrderSection">
+                    <p class="track-order-note" data-content="trackOrderNote"></p>
+                    <p class="track-order-phone" id="trackOrderPhone"></p>
+                </div>
+                <button class="btn btn-primary" id="closeThankYouModal" data-content="closeBtn"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal confirm-modal">
+            <div class="modal-body">
+                <div class="confirm-icon">⚠️</div>
+                <h2 class="confirm-title" data-content="confirmTitle"></h2>
+                <p class="confirm-message" id="confirmMessage"></p>
+                <div class="confirm-actions">
+                    <button class="btn btn-secondary" id="confirmCancelBtn" data-content="confirmCancelBtn"></button>
+                    <button class="btn btn-primary" id="confirmYesBtn" data-content="confirmYesBtn"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="content.js"></script>
+    <script src="logic.js"></script>
+    <script>
+        // Initialize product details page
+        if (typeof initProductDetailsPage === 'function') {
+            initProductDetailsPage();
+        }
+    </script>
+</body>
+</html>
