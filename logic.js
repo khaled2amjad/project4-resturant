@@ -75,7 +75,7 @@ function addToCart(productId, productName, productPrice, productImage) {
             id: productId,
             name: productName,
             price: productPrice,
-            image: productImage || 'assests/istockphoto-1184633031-612x612.jpg',
+            image: productImage || 'assests/logo.png',
             quantity: 1
         });
     }
@@ -185,11 +185,11 @@ function renderCartItems() {
     if (cartSummary) cartSummary.style.display = 'block';
     
     cartItemsContainer.innerHTML = cart.map(item => {
-        const imageUrl = item.image || item.img || 'assests/istockphoto-1184633031-612x612.jpg';
+        const imageUrl = item.image || item.img || 'assests/logo.png';
         console.log('Cart item:', item.name, 'Image URL:', imageUrl);
         return `
         <div class="cart-item">
-            <img src="${imageUrl}" alt="${item.name}" class="cart-item-image" onerror="this.src='assests/istockphoto-1184633031-612x612.jpg'">
+            <img src="${imageUrl}" alt="${item.name}" class="cart-item-image" onerror="this.src='assests/logo.png'">
             <div class="cart-item-details">
                 <div class="cart-item-name">${item.name}</div>
                 <div class="cart-item-price">${item.price.toFixed(2)} ${CONSTANTS.CURRENCY || 'JOD'}</div>
@@ -775,13 +775,13 @@ function renderMenuGrid() {
             : item.description;
 
         // Debug: Check image URL
-        const imageUrl = item.img ? item.img.replace(/\\u0026/g, '&') : 'assests/istockphoto-1184633031-612x612.jpg';
+        const imageUrl = item.img ? item.img.replace(/\\u0026/g, '&') : 'assests/logo.png';
         console.log('Product:', item.name, 'Image URL:', imageUrl);
 
         return `
             <article class="menu-card" data-id="${item.id}">
                 <div class="menu-card-image-wrapper">
-                    <img src="${imageUrl}" alt="${item.name}" class="menu-card-image" onerror="this.src='assests/istockphoto-1184633031-612x612.jpg'">
+                    <img src="${imageUrl}" alt="${item.name}" class="menu-card-image" onerror="this.src='assests/logo.png'">
                 </div>
                 <div class="menu-card-content">
                     <h3 class="menu-card-name">${item.name}</h3>
@@ -1230,10 +1230,10 @@ function renderProductDetails(product) {
     // Product image
     const productImageEl = document.getElementById('productImage');
     if (productImageEl) {
-        productImageEl.src = product.img ? product.img.replace(/\\u0026/g, '&') : 'assests/istockphoto-1184633031-612x612.jpg';
+        productImageEl.src = product.img ? product.img.replace(/\\u0026/g, '&') : 'assests/logo.png';
         productImageEl.alt = product.name;
         productImageEl.onerror = function() {
-            this.src = 'assests/istockphoto-1184633031-612x612.jpg';
+            this.src = 'assests/logo.png';
         };
     }
     
